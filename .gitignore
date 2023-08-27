@@ -4,11 +4,11 @@
 node_modules/
 
 # idea
-.idea
-.fleet
+.idea/
+.fleet/
 
 # vscode
-.vscode
+.vscode/
 
 # Expo
 .expo/

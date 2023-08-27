@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { Loader } from '../../components/Loader';
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   const { firstPokemonId, secondPokemonId } = useSelector(
     (state: RootState) => state.pokemonSlice,
   );

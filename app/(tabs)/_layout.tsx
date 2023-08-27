@@ -3,9 +3,6 @@ import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
 import Colors from '../../constants/Colors';
-import {useGetPokemonById} from "../../api/pokemon/pokemon.queries";
-import {Text, View} from "../../components/Themed";
-import {getPokemonsToCompare} from "../../utils/randomPokemonIdGenerator";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -24,11 +21,12 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
+          title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -56,4 +54,3 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
