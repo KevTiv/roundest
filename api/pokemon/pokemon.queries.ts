@@ -1,4 +1,4 @@
-import {QueryOptions, useQuery} from "@tanstack/react-query";
+import {QueryOptions, useQuery, useMutation} from "@tanstack/react-query";
 import {pokemonApi} from "./pokemon.api";
 import {GetPokemonByIdResponse} from "./pokemon.types";
 
@@ -10,3 +10,9 @@ export const useGetPokemonById = (id: number, options?: QueryOptions<GetPokemonB
         async ()=> pokemonInstance.getPokemonById(id),
         options
     )
+
+export const useUpdateRoundestLeaderboard = (options?: QueryOptions<GetPokemonByIdResponse, Error>) => useMutation({
+    mutationKey: ['useMutateRoundestLeaderboard'],
+    mutationFn: async (pokemon: GetPokemonByIdResponse)=> pokemonInstance.updateRoundestLeaderBoard(pokemon),
+    ...options
+})

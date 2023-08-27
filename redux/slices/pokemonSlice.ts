@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getPokemonsToCompare } from '../../utils/randomPokemonIdGenerator';
+import {getNewPokemonId, getPokemonsToCompare} from '../../utils/randomPokemonIdGenerator';
 
 export interface PokemonSliceState {
   firstPokemonId: number;
@@ -7,8 +7,8 @@ export interface PokemonSliceState {
 }
 
 const initialState: PokemonSliceState = {
-  firstPokemonId: 111,
-  secondPokemonId: 222,
+  firstPokemonId: getNewPokemonId(),
+  secondPokemonId: getNewPokemonId(),
 };
 
 export const pokemonSlice = createSlice({
