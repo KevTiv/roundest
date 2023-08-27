@@ -3,6 +3,16 @@
 # dependencies
 node_modules/
 
+# idea
+.idea/
+.fleet/
+
+# vscode
+.vscode/
+
+# env
+.env
+
 # Expo
 .expo/
 dist/
