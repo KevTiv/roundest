@@ -1,31 +1,41 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import { useGetPokemonById } from '../../api/pokemon/pokemon.queries';
+import { PokemonCard } from '../../components/PokemonCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { Loader } from '../../components/Loader';
 
 export default function TabOneScreen() {
+  const { firstPokemonId, secondPokemonId } = useSelector(
+    (state: RootState) => state.pokemonSlice,
+  );
+
+  const {
+    data: firstPokemon,
+    isLoading: isFirstPokemonLoading,
+    error: firstPokemonError,
+  } = useGetPokemonById(firstPokemonId);
+  const {
+    data: secondPokemon,
+    isLoading: isSecondPokemonLoading,
+    error: secondPokemonError,
+  } = useGetPokemonById(secondPokemonId);
+
+  if (firstPokemonError || secondPokemonError) {
+    throw new Error('Oops, something went wrong!');
+  }
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View className="w-full flex-1 flex justify-center items-center">
+      <Text className="text-xl font-medium capitalize">Which is roundest?</Text>
+      {isFirstPokemonLoading || isSecondPokemonLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <PokemonCard pokemon={firstPokemon} />
+          <PokemonCard pokemon={secondPokemon} />
+        </>
+      )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
