@@ -10,9 +10,6 @@ node_modules/
 # vscode
 .vscode/
 
-# env
-.env
-
 # Expo
 .expo/
 dist/
@@ -40,6 +37,9 @@ yarn-error.*
 
 # local env files
 .env*.local
+
+# pnpm
+pnpm-lock.yaml
 
 # typescript
 *.tsbuildinfo
