@@ -37,9 +37,16 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # pnpm
 pnpm-lock.yaml
+
+# npm
+package-lock.json
+
+# prisma
+prisma/migrations/
 
 # typescript
 *.tsbuildinfo
